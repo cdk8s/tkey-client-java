@@ -67,7 +67,14 @@ public class TkeyProperties {
 	// ======================================================
 
 	public String getFinalLogoutUri() {
-		return getTkeyServerLogoutUri() + "?redirect_uri=" + clientLogoutRedirectUri;
+		return getFinalLogoutUri(clientLogoutRedirectUri);
+	}
+
+	public String getFinalLogoutUri(String redirectUri) {
+		if (StringUtils.isBlank(redirectUri)) {
+			redirectUri = clientLogoutRedirectUri;
+		}
+		return getTkeyServerLogoutUri() + "?redirect_uri=" + redirectUri;
 	}
 
 	public String getFinalRedirectUri(javax.servlet.http.HttpServletRequest request) {
