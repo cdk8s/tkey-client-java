@@ -11,3 +11,15 @@
 ## Gitee
 
 - [Gitee](https://gitee.com/cdk8s/tkey-docs)
+
+## 当前最新版本
+
+- Maven 官方：<https://search.maven.org/artifact/com.cdk8s.tkey/tkey-sso-client-starter-rest>
+
+```
+<dependency>
+    <groupId>com.cdk8s.tkey</groupId>
+    <artifactId>tkey-sso-client-starter-rest</artifactId>
+    <version>1.0.2</version>
+</dependency>
+```
