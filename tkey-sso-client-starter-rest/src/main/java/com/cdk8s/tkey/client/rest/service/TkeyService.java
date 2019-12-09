@@ -56,7 +56,12 @@ public class TkeyService {
 
 	@SneakyThrows
 	public OauthUserProfile getUserProfile(OAuth2AccessToken oauthToken) {
-		String url = tkeyProperties.getUserInfoUri() + "?access_token=" + oauthToken.getAccessToken();
+		return getUserProfile(oauthToken.getAccessToken());
+	}
+
+	@SneakyThrows
+	public OauthUserProfile getUserProfile(String oauthToken) {
+		String url = tkeyProperties.getUserInfoUri() + "?access_token=" + oauthToken;
 		OkHttpResponse okHttpResponse = get(url);
 
 		if (okHttpResponse.getStatus() != HttpStatus.OK.value()) {
@@ -65,7 +70,6 @@ public class TkeyService {
 
 		return getOauthUserProfile(okHttpResponse.getResponse());
 	}
-
 
 	//=====================================业务处理 end=====================================
 
