@@ -5,20 +5,49 @@
 
 	<groupId>com.cdk8s.tkey</groupId>
 	<artifactId>tkey-sso-client-starter-rest</artifactId>
-	<version>1.0.2</version>
+	<version>1.0.3</version>
 	<packaging>jar</packaging>
+
+	<!--======================================================-->
 
 	<name>${project.artifactId}</name>
 	<description>${project.artifactId}</description>
 
 	<url>https://github.com/cdk8s</url>
 
+	<organization>
+		<name>cdk8s</name>
+		<url>https://github.com/cdk8s</url>
+	</organization>
+
+	<licenses>
+		<license>
+			<name>MIT</name>
+			<url>http://www.opensource.org/licenses/MIT</url>
+		</license>
+	</licenses>
+
 	<developers>
 		<developer>
 			<name>cdk8s</name>
 			<email>cdk8s@qq.com</email>
+			<roles>
+				<role>admin</role>
+				<role>developer</role>
+			</roles>
+			<timezone>+8</timezone>
 		</developer>
 	</developers>
+
+
+	<scm>
+		<connection>scm:git:https://github.com/cdk8s/tkey-client-java.git</connection>
+		<developerConnection>scm:git:https://github.com/cdk8s/tkey-client-java.git</developerConnection>
+		<url>https://github.com/cdk8s/tkey-client-java</url>
+		<tag>HEAD</tag>
+	</scm>
+
+	<!--======================================================-->
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -124,24 +153,71 @@
 		</plugins>
 	</build>
 
-	<repositories>
-		<repository>
-			<id>aliyun-pom-repos</id>
-			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
+	<!--======================================================-->
 
-	<pluginRepositories>
-		<pluginRepository>
-			<id>aliyun-pom-plugin</id>
-			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
+	<profiles>
+		<profile>
+			<id>oss</id>
+			<build>
+				<plugins>
+					<!-- Source -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+						<version>3.1.0</version>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>jar-no-fork</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<!-- Javadoc -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>3.1.0</version>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<!-- GPG -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.5</version>
+						<executions>
+							<execution>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+			<distributionManagement>
+				<snapshotRepository>
+					<!--这里的 ID 必须和你 settings.xml 中配置用户的的 id 一致-->
+					<id>oss</id>
+					<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+				</snapshotRepository>
+				<repository>
+					<!--这里的 ID 必须和你 settings.xml 中配置用户的的 id 一致-->
+					<id>oss</id>
+					<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+				</repository>
+			</distributionManagement>
+		</profile>
+	</profiles>
+
 
 </project>
