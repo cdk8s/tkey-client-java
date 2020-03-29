@@ -20,6 +20,6 @@
 <dependency>
     <groupId>com.cdk8s.tkey</groupId>
     <artifactId>tkey-sso-client-starter-rest</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
 </dependency>
 ```
