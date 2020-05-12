@@ -1,5 +1,7 @@
 package com.cdk8s.tkey.client.rest.pojo.dto;
 
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,6 +13,7 @@ import java.io.Serializable;
 @Setter
 @ToString
 @NoArgsConstructor
+@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class OauthUserProfile implements Serializable {
 
 	private static final long serialVersionUID = 8098354063458373513L;
