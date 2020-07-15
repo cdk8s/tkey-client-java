@@ -26,6 +26,8 @@ public class OauthUserAttribute implements Serializable {
 	private String avatarUrl;
 	private String email;
 	private String mobilePhone;
+	private String tenantId;
+	private String userType;
 	private Map<String, Object> userAttributeExt;
 
 }
