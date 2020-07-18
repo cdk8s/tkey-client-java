@@ -48,6 +48,9 @@ public class TkeyService {
 
 		OkHttpResponse okHttpResponse = post(tkeyProperties.getAccessTokenUri(), params, headers);
 		if (okHttpResponse.getStatus() != HttpStatus.OK.value()) {
+			log.error("TKey client_id = <{}>", tkeyProperties.getClientId());
+			log.error("TKey code = <{}>", code);
+			log.error("TKey AccessTokenUri = <{}>", tkeyProperties.getAccessTokenUri());
 			throw new RuntimeException("获取 AccessToken 失败");
 		}
 
@@ -65,6 +68,8 @@ public class TkeyService {
 		OkHttpResponse okHttpResponse = get(url);
 
 		if (okHttpResponse.getStatus() != HttpStatus.OK.value()) {
+			log.error("TKey client_id = <{}>", tkeyProperties.getClientId());
+			log.error("TKey UserInfoUri = <{}>", tkeyProperties.getUserInfoUri());
 			throw new RuntimeException("获取 UserInfo 失败");
 		}
 
