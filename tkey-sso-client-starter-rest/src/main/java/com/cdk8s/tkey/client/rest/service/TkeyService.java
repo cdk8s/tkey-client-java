@@ -97,7 +97,9 @@ public class TkeyService {
 	}
 
 	private OkHttpResponse get(String url) {
-		Request request = new Request.Builder().url(url).build();
+		Request.Builder builderRequest = new Request.Builder();
+		builderRequest.addHeader("Connection", "close");
+		Request request = builderRequest.url(url).build();
 		return getResponse(request);
 	}
 
@@ -108,6 +110,8 @@ public class TkeyService {
 		}
 
 		Request.Builder builderRequest = new Request.Builder();
+		builderRequest.addHeader("Connection", "close");
+
 		if (headers != null && headers.keySet().size() > 0) {
 			headers.forEach((key, value) -> {
 				builderRequest.addHeader(key, value);
