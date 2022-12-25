@@ -20,6 +20,7 @@ public class OauthUserAttribute implements Serializable {
 	private static final long serialVersionUID = -5890673731362415002L;
 
 	private String userId;
+	private String userUuid;
 	private String username;
 	private String nickname;
 	private String realName;
@@ -27,6 +28,7 @@ public class OauthUserAttribute implements Serializable {
 	private String email;
 	private String mobilePhone;
 	private String tenantId;
+	private String tenantUuid;
 	private String userType;
 	private Map<String, Object> userAttributeExt;
 
