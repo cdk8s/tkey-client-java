@@ -33,7 +33,7 @@
 		<java.version>1.8</java.version>
 
 		<spring-boot.version>2.1.9.RELEASE</spring-boot.version>
-		<commons-lang3.version>3.8.1</commons-lang3.version>
+		<commons-lang3.version>3.18.0</commons-lang3.version>
 
 		<okhttp.version>3.12.1</okhttp.version>
 		<servlet-api.version>2.5</servlet-api.version>
